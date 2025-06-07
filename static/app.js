@@ -215,6 +215,16 @@ class WindowsEmergencyApp {
         // 显示统计卡片
         this.displayStatsCards(results.summary);
         
+        // 显示攻击统计
+        if (results.attack_statistics) {
+            this.displayAttackStats(results.attack_statistics);
+        }
+        
+        // 显示详细分析
+        if (results.detailed_analysis) {
+            this.displayDetailedAnalysis(results.detailed_analysis);
+        }
+        
         // 显示告警
         this.displayAlerts(results);
         
@@ -277,6 +287,105 @@ class WindowsEmergencyApp {
             `;
             container.appendChild(card);
         });
+    }
+
+    displayAttackStats(attackStats) {
+        const container = document.getElementById('attackStatsContainer');
+        if (!container) return;
+        
+        container.innerHTML = `
+            <div class="attack-stats-section">
+                <h5><i class="fas fa-crosshairs"></i> 攻击统计分析</h5>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="stat-card attack-stat">
+                            <div class="stat-number text-danger">${attackStats.total_attacks}</div>
+                            <div class="stat-label">总攻击次数</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="stat-card attack-stat">
+                            <div class="stat-number text-warning">${attackStats.failed_logins}</div>
+                            <div class="stat-label">失败登录</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="stat-card attack-stat">
+                            <div class="stat-number text-danger">${attackStats.privilege_escalations}</div>
+                            <div class="stat-label">权限提升</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="stat-card attack-stat">
+                            <div class="stat-number text-danger">${attackStats.malware_detections}</div>
+                            <div class="stat-label">恶意软件</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="stat-card attack-stat">
+                            <div class="stat-number text-warning">${attackStats.suspicious_processes}</div>
+                            <div class="stat-label">可疑进程</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="stat-card attack-stat">
+                            <div class="stat-number text-info">${attackStats.network_anomalies}</div>
+                            <div class="stat-label">网络异常</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    displayDetailedAnalysis(detailedAnalysis) {
+        const container = document.getElementById('detailedAnalysisContainer');
+        if (!container) return;
+        
+        let html = `
+            <div class="detailed-analysis-section">
+                <h5><i class="fas fa-microscope"></i> 详细分析结果</h5>
+                <div class="analysis-tabs">
+                    <button class="tab-button active" onclick="showAnalysisTab('processes')">
+                        <i class="fas fa-cogs"></i> 进程分析
+                    </button>
+                    <button class="tab-button" onclick="showAnalysisTab('network')">
+                        <i class="fas fa-network-wired"></i> 网络分析
+                    </button>
+                    <button class="tab-button" onclick="showAnalysisTab('users')">
+                        <i class="fas fa-users"></i> 用户分析
+                    </button>
+                    <button class="tab-button" onclick="showAnalysisTab('services')">
+                        <i class="fas fa-server"></i> 服务分析
+                    </button>
+                    <button class="tab-button" onclick="showAnalysisTab('events')">
+                        <i class="fas fa-list-alt"></i> 事件分析
+                    </button>
+                </div>
+                
+                <div id="processes-tab" class="tab-content active">
+                    ${displayProcessAnalysis(detailedAnalysis.processes)}
+                </div>
+                
+                <div id="network-tab" class="tab-content">
+                    ${displayNetworkAnalysis(detailedAnalysis.network_connections)}
+                </div>
+                
+                <div id="users-tab" class="tab-content">
+                    ${displayUserAnalysis(detailedAnalysis.users)}
+                </div>
+                
+                <div id="services-tab" class="tab-content">
+                    ${displayServiceAnalysis(detailedAnalysis.services)}
+                </div>
+                
+                <div id="events-tab" class="tab-content">
+                    ${displayEventAnalysis(detailedAnalysis.events)}
+                </div>
+            </div>
+        `;
+        
+        container.innerHTML = html;
     }
 
     displayAlerts(results) {
@@ -635,6 +744,214 @@ function analyzeFile() {
 
 function exportResults(format) {
     app.exportResults(format);
+}
+
+// 详细分析相关函数
+function showAnalysisTab(tabName) {
+    // 隐藏所有标签页内容
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // 移除所有按钮的active类
+    document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // 显示选中的标签页
+    document.getElementById(tabName + '-tab').classList.add('active');
+    event.target.classList.add('active');
+}
+
+function displayProcessAnalysis(processes) {
+    let html = '<div class="process-analysis">';
+    html += `<h6>📊 进程统计</h6>`;
+    html += `<div class="stats-row">`;
+    html += `<span class="stat-badge">总进程: ${processes.total_count}</span>`;
+    html += `<span class="stat-badge">可疑进程: ${processes.suspicious_processes.length}</span>`;
+    html += `<span class="stat-badge">高内存进程: ${processes.high_memory_processes.length}</span>`;
+    html += `<span class="stat-badge">系统进程: ${processes.system_processes.length}</span>`;
+    html += `</div>`;
+    
+    if (processes.suspicious_processes.length > 0) {
+        html += '<h6 class="mt-3">🚨 可疑进程</h6>';
+        html += '<div class="table-responsive"><table class="table table-sm">';
+        html += '<thead><tr><th>进程名</th><th>PID</th><th>内存使用</th><th>会话</th></tr></thead><tbody>';
+        processes.suspicious_processes.forEach(proc => {
+            html += `<tr><td>${proc.name}</td><td>${proc.pid}</td><td>${proc.memory_usage}</td><td>${proc.session}</td></tr>`;
+        });
+        html += '</tbody></table></div>';
+    }
+    
+    if (processes.high_memory_processes.length > 0) {
+        html += '<h6 class="mt-3">💾 高内存使用进程</h6>';
+        html += '<div class="table-responsive"><table class="table table-sm">';
+        html += '<thead><tr><th>进程名</th><th>PID</th><th>内存使用</th><th>内存(MB)</th></tr></thead><tbody>';
+        processes.high_memory_processes.slice(0, 10).forEach(proc => {
+            html += `<tr><td>${proc.name}</td><td>${proc.pid}</td><td>${proc.memory_usage}</td><td>${proc.memory_mb.toFixed(1)}</td></tr>`;
+        });
+        html += '</tbody></table></div>';
+    }
+    
+    html += '</div>';
+    return html;
+}
+
+function displayNetworkAnalysis(network) {
+    let html = '<div class="network-analysis">';
+    html += `<h6>🌐 网络统计</h6>`;
+    html += `<div class="stats-row">`;
+    html += `<span class="stat-badge">总连接: ${network.total_connections}</span>`;
+    html += `<span class="stat-badge">已建立: ${network.established_connections.length}</span>`;
+    html += `<span class="stat-badge">监听端口: ${network.listening_ports.length}</span>`;
+    html += `<span class="stat-badge">外部IP: ${network.external_ips.length}</span>`;
+    html += `<span class="stat-badge">可疑连接: ${network.suspicious_connections.length}</span>`;
+    html += `</div>`;
+    
+    if (network.external_ips.length > 0) {
+        html += '<h6 class="mt-3">🌍 外部IP连接</h6>';
+        html += '<div class="ip-list">';
+        network.external_ips.slice(0, 20).forEach(ip => {
+            html += `<span class="ip-badge">${ip}</span>`;
+        });
+        html += '</div>';
+    }
+    
+    if (network.suspicious_connections.length > 0) {
+        html += '<h6 class="mt-3">⚠️ 可疑连接</h6>';
+        html += '<div class="table-responsive"><table class="table table-sm">';
+        html += '<thead><tr><th>协议</th><th>本地地址</th><th>远程地址</th><th>状态</th></tr></thead><tbody>';
+        network.suspicious_connections.forEach(conn => {
+            html += `<tr><td>${conn.protocol}</td><td>${conn.local_address}</td><td>${conn.foreign_address}</td><td>${conn.state}</td></tr>`;
+        });
+        html += '</tbody></table></div>';
+    }
+    
+    if (Object.keys(network.port_statistics).length > 0) {
+        html += '<h6 class="mt-3">📊 端口统计</h6>';
+        html += '<div class="port-stats">';
+        Object.entries(network.port_statistics).slice(0, 10).forEach(([port, count]) => {
+            html += `<span class="port-badge">端口${port}: ${count}次</span>`;
+        });
+        html += '</div>';
+    }
+    
+    html += '</div>';
+    return html;
+}
+
+function displayUserAnalysis(users) {
+    let html = '<div class="user-analysis">';
+    html += `<h6>👥 用户统计</h6>`;
+    html += `<div class="stats-row">`;
+    html += `<span class="stat-badge">总用户: ${users.total_users}</span>`;
+    html += `<span class="stat-badge">管理员: ${users.admin_users.length}</span>`;
+    html += `<span class="stat-badge">普通用户: ${users.regular_users.length}</span>`;
+    html += `<span class="stat-badge">隐藏用户: ${users.hidden_users.length}</span>`;
+    html += `<span class="stat-badge">禁用用户: ${users.disabled_users.length}</span>`;
+    html += `<span class="stat-badge">可疑用户: ${users.suspicious_users.length}</span>`;
+    html += `</div>`;
+    
+    if (users.admin_users.length > 0) {
+        html += '<h6 class="mt-3">👑 管理员用户</h6>';
+        html += '<div class="user-list">';
+        users.admin_users.forEach(user => {
+            html += `<div class="user-item">`;
+            html += `<strong>${user.username}</strong>`;
+            if (user.groups && user.groups.length > 0) {
+                html += ` <small>(${user.groups.join(', ')})</small>`;
+            }
+            html += `</div>`;
+        });
+        html += '</div>';
+    }
+    
+    if (users.suspicious_users.length > 0) {
+        html += '<h6 class="mt-3">⚠️ 可疑用户</h6>';
+        html += '<div class="user-list">';
+        users.suspicious_users.forEach(user => {
+            html += `<div class="user-item suspicious">`;
+            html += `<strong>${user.username}</strong>`;
+            if (user.is_admin) html += ` <span class="badge bg-danger">管理员</span>`;
+            if (user.is_hidden) html += ` <span class="badge bg-warning">隐藏</span>`;
+            if (user.is_disabled) html += ` <span class="badge bg-secondary">禁用</span>`;
+            html += `</div>`;
+        });
+        html += '</div>';
+    }
+    
+    if (users.hidden_users.length > 0) {
+        html += '<h6 class="mt-3">🔍 隐藏用户</h6>';
+        html += '<div class="user-list">';
+        users.hidden_users.forEach(user => {
+            html += `<div class="user-item hidden">`;
+            html += `<strong>${user.username}</strong>`;
+            if (user.is_admin) html += ` <span class="badge bg-danger">管理员</span>`;
+            html += `</div>`;
+        });
+        html += '</div>';
+    }
+    
+    html += '</div>';
+    return html;
+}
+
+function displayServiceAnalysis(services) {
+    let html = '<div class="service-analysis">';
+    html += `<h6>⚙️ 服务统计</h6>`;
+    html += `<div class="stats-row">`;
+    html += `<span class="stat-badge">总服务: ${services.total_services}</span>`;
+    html += `<span class="stat-badge">运行中: ${services.running_services.length}</span>`;
+    html += `<span class="stat-badge">已停止: ${services.stopped_services.length}</span>`;
+    html += `<span class="stat-badge">自动启动: ${services.auto_start_services.length}</span>`;
+    html += `<span class="stat-badge">可疑服务: ${services.suspicious_services.length}</span>`;
+    html += `</div>`;
+    
+    if (services.suspicious_services.length > 0) {
+        html += '<h6 class="mt-3">⚠️ 可疑服务</h6>';
+        html += '<div class="table-responsive"><table class="table table-sm">';
+        html += '<thead><tr><th>服务名</th><th>状态</th><th>启动类型</th></tr></thead><tbody>';
+        services.suspicious_services.forEach(svc => {
+            html += `<tr><td>${svc.name}</td><td>${svc.state}</td><td>${svc.start_type}</td></tr>`;
+        });
+        html += '</tbody></table></div>';
+    }
+    
+    if (services.running_services.length > 0) {
+        html += '<h6 class="mt-3">▶️ 运行中的服务 (前20个)</h6>';
+        html += '<div class="service-list">';
+        services.running_services.slice(0, 20).forEach(svc => {
+            html += `<span class="service-badge running">${svc.name}</span>`;
+        });
+        html += '</div>';
+    }
+    
+    html += '</div>';
+    return html;
+}
+
+function displayEventAnalysis(events) {
+    let html = '<div class="event-analysis">';
+    html += `<h6>📋 事件统计</h6>`;
+    html += `<div class="stats-row">`;
+    html += `<span class="stat-badge">总事件: ${events.total_events}</span>`;
+    html += `<span class="stat-badge">失败登录: ${events.failed_logins.length}</span>`;
+    html += `<span class="stat-badge">成功登录: ${events.successful_logins.length}</span>`;
+    html += `<span class="stat-badge">权限提升: ${events.privilege_escalations.length}</span>`;
+    html += `</div>`;
+    
+    if (events.details.length > 0) {
+        html += '<h6 class="mt-3">📊 事件详情</h6>';
+        html += '<div class="table-responsive"><table class="table table-sm">';
+        html += '<thead><tr><th>事件ID</th><th>类型</th><th>次数</th><th>描述</th></tr></thead><tbody>';
+        events.details.forEach(event => {
+            html += `<tr><td>${event.event_id}</td><td>${event.type}</td><td>${event.count}</td><td>${event.description}</td></tr>`;
+        });
+        html += '</tbody></table></div>';
+    }
+    
+    html += '</div>';
+    return html;
 }
 
 // 初始化应用

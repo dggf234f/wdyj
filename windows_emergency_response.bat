@@ -13,12 +13,28 @@ echo Generated: %date% %time% >> "%REPORT_FILE%"
 echo =============================================== >> "%REPORT_FILE%"
 echo. >> "%REPORT_FILE%"
 
-echo [INFO] Starting Windows Emergency Response Data Collection...
+echo.
+echo ===============================================
+echo Windows Emergency Response Data Collection
+echo ===============================================
+echo [INFO] Starting data collection...
 echo [INFO] Report will be saved as: %REPORT_FILE%
+echo [INFO] This may take a few minutes, please wait...
+echo.
 
 REM ===== 系统信息查询 =====
 echo [INFO] Collecting system information...
 echo ===== SYSTEM INFORMATION ===== >> "%REPORT_FILE%"
+
+REM 检查管理员权限
+net session >nul 2>&1
+if %errorlevel% neq 0 (
+    echo [WARNING] This script is not running with administrator privileges. >> "%REPORT_FILE%"
+    echo [WARNING] Some commands may fail or provide limited information. >> "%REPORT_FILE%"
+    echo [WARNING] For best results, run as administrator. >> "%REPORT_FILE%"
+    echo. >> "%REPORT_FILE%"
+    echo [WARNING] Not running as administrator - some data may be limited
+)
 echo. >> "%REPORT_FILE%"
 
 echo ----- System Details ----- >> "%REPORT_FILE%"
@@ -260,8 +276,19 @@ echo =============================================== >> "%REPORT_FILE%"
 echo Report Generation Completed: %date% %time% >> "%REPORT_FILE%"
 echo =============================================== >> "%REPORT_FILE%"
 
-echo [INFO] Data collection completed successfully!
-echo [INFO] Report saved as: %REPORT_FILE%
-echo [INFO] You can now upload this file to the web interface for analysis.
-
-pause
+echo.
+echo ===============================================
+echo Data Collection Completed Successfully!
+echo ===============================================
+echo [SUCCESS] Report saved as: %REPORT_FILE%
+echo [INFO] File size: 
+dir "%REPORT_FILE%" | find "%REPORT_FILE%"
+echo.
+echo [NEXT STEPS]
+echo 1. Upload the report file to the web interface for analysis
+echo 2. Review the analysis results and recommendations
+echo 3. Follow the suggested remediation steps
+echo.
+echo Press any key to open the report directory...
+pause >nul
+explorer /select,"%REPORT_FILE%"

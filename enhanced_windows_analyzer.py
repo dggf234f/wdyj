@@ -23,6 +23,7 @@ import psutil
 import csv
 from io import StringIO
 from windows_emergency_guide import WindowsEmergencyGuide
+from detailed_analyzer import DetailedAnalyzer
 
 # 配置日志
 logging.basicConfig(
@@ -184,6 +185,7 @@ class EnhancedWindowsAnalyzer:
     def __init__(self):
         self.rules = self.load_rules()
         self.guide = WindowsEmergencyGuide()
+        self.detailed_analyzer = DetailedAnalyzer()
         self.analysis_stats = defaultdict(int)
         
     def load_rules(self):
@@ -388,6 +390,16 @@ class EnhancedWindowsAnalyzer:
             
             # 生成统计信息
             results['statistics'] = self.generate_statistics(report_data)
+            
+            # 执行详细分析
+            detailed_results = self.detailed_analyzer.analyze_detailed_content(
+                report_data.get('content', ''), 
+                Path(file_path).name
+            )
+            results['detailed_analysis'] = detailed_results['detailed_analysis']
+            results['attack_statistics'] = detailed_results['attack_statistics']
+            results['security_summary'] = detailed_results['security_summary']
+            results['detailed_recommendations'] = detailed_results['recommendations']
             
             # 规则匹配分析
             total_rules_checked = 0

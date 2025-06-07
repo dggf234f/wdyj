@@ -1,0 +1,79 @@
+- id: failed_login_attempts
+  name: 登录失败尝试
+  description: 检测大量登录失败尝试
+  level: high
+  pattern: '(?i)(Event ID.*4625|登录失败|Logon failure)'
+  target_section: event_logs
+  recommendation: 检查登录失败的源IP和用户名，考虑实施账户锁定策略
+
+- id: privilege_escalation
+  name: 权限提升尝试
+  description: 检测权限提升尝试
+  level: high
+  pattern: '(?i)(Event ID.*4672|Special privileges|特殊权限)'
+  target_section: event_logs
+  recommendation: 检查权限提升的用户和时间，确认是否为授权操作
+
+- id: suspicious_logon
+  name: 可疑登录
+  description: 检测可疑的登录活动
+  level: medium
+  pattern: '(?i)(Event ID.*4624.*Type 3|Network logon|网络登录)'
+  target_section: event_logs
+  recommendation: 检查网络登录的源IP和时间，确认是否为正常访问
+
+- id: account_creation
+  name: 账户创建
+  description: 检测新账户创建
+  level: medium
+  pattern: '(?i)(Event ID.*4720|User account.*created|用户账户.*创建)'
+  target_section: event_logs
+  recommendation: 检查新创建账户的权限和用途，确认是否为授权创建
+
+- id: group_membership_change
+  name: 组成员变更
+  description: 检测组成员身份变更
+  level: medium
+  pattern: '(?i)(Event ID.*4728|Event ID.*4732|Member.*added|成员.*添加)'
+  target_section: event_logs
+  recommendation: 检查组成员变更的详细信息，确认是否为授权操作
+
+- id: security_policy_change
+  name: 安全策略变更
+  description: 检测安全策略变更
+  level: high
+  pattern: '(?i)(Event ID.*4719|Audit policy.*changed|审计策略.*更改)'
+  target_section: event_logs
+  recommendation: 检查安全策略变更的详细信息和操作者
+
+- id: suspicious_file_access
+  name: 可疑文件访问
+  description: 检测对敏感文件的访问
+  level: medium
+  pattern: '(?i)(Event ID.*4663.*SAM|Event ID.*4663.*SECURITY|Event ID.*4663.*SYSTEM)'
+  target_section: event_logs
+  recommendation: 检查对系统关键文件的访问，确认是否为正常操作
+
+- id: service_installation
+  name: 服务安装
+  description: 检测新服务安装
+  level: medium
+  pattern: '(?i)(Event ID.*7034|Event ID.*7035|Service.*installed|服务.*安装)'
+  target_section: event_logs
+  recommendation: 检查新安装服务的详细信息和来源
+
+- id: process_creation
+  name: 可疑进程创建
+  description: 检测可疑进程创建
+  level: medium
+  pattern: '(?i)(Event ID.*4688.*cmd\.exe|Event ID.*4688.*powershell\.exe)'
+  target_section: event_logs
+  recommendation: 检查进程创建的命令行参数和父进程
+
+- id: rdp_connection
+  name: 远程桌面连接
+  description: 检测远程桌面连接
+  level: low
+  pattern: '(?i)(Event ID.*4624.*Type 10|Remote Interactive|远程交互)'
+  target_section: event_logs
+  recommendation: 检查远程桌面连接的源IP和用户，确认是否为授权访问

@@ -1,0 +1,79 @@
+- id: suspicious_admin_user
+  name: 可疑管理员用户
+  description: 检测非标准的管理员账户
+  level: high
+  pattern: '(?i)(admin|administrator|root|sa)\d+|hack|test|temp.*admin'
+  target_section: user
+  recommendation: 检查该用户账户的创建时间和用途，确认是否为合法管理员账户
+
+- id: suspicious_service
+  name: 可疑服务
+  description: 检测可疑的Windows服务
+  level: medium
+  pattern: '(?i)(backdoor|hack|shell|rat|trojan|malware|virus)'
+  target_section: service
+  recommendation: 立即停止可疑服务并检查其可执行文件
+
+- id: suspicious_process
+  name: 可疑进程
+  description: 检测可疑的运行进程
+  level: medium
+  pattern: '(?i)(cmd\.exe.*-c|powershell.*-enc|wscript.*\.vbs|cscript.*\.js)'
+  target_section: process
+  recommendation: 检查进程的命令行参数和父进程，确认是否为恶意活动
+
+- id: suspicious_startup
+  name: 可疑启动项
+  description: 检测可疑的启动程序
+  level: high
+  pattern: '(?i)(temp|appdata|users.*downloads|programdata.*\.(exe|bat|cmd|vbs|js))'
+  target_section: startup
+  recommendation: 检查启动项的来源和用途，删除不必要的启动项
+
+- id: suspicious_scheduled_task
+  name: 可疑计划任务
+  description: 检测可疑的计划任务
+  level: medium
+  pattern: '(?i)(download|curl|wget|invoke-webrequest|bitsadmin)'
+  target_section: scheduled_tasks
+  recommendation: 检查计划任务的详细配置和执行内容
+
+- id: unusual_network_connection
+  name: 异常网络连接
+  description: 检测异常的网络连接
+  level: medium
+  pattern: '(?i)(ESTABLISHED.*:(22|23|135|139|445|3389|4444|5555|6666|7777|8888|9999))'
+  target_section: network
+  recommendation: 检查网络连接的目标地址和用途，确认是否为正常业务连接
+
+- id: suspicious_registry_run
+  name: 可疑注册表运行项
+  description: 检测注册表中的可疑运行项
+  level: high
+  pattern: '(?i)(temp|appdata|programdata).*\.(exe|bat|cmd|vbs|js|ps1)'
+  target_section: registry
+  recommendation: 检查注册表项的值和来源，删除恶意的运行项
+
+- id: powershell_execution_policy
+  name: PowerShell执行策略风险
+  description: 检测不安全的PowerShell执行策略
+  level: medium
+  pattern: '(?i)(Unrestricted|Bypass)'
+  target_section: powershell
+  recommendation: 将PowerShell执行策略设置为Restricted或RemoteSigned
+
+- id: suspicious_file_location
+  name: 可疑文件位置
+  description: 检测在异常位置的可执行文件
+  level: medium
+  pattern: '(?i)(temp|appdata|programdata|users.*downloads).*\.(exe|bat|cmd|vbs|js|ps1)'
+  target_section: filesystem
+  recommendation: 检查文件的来源和用途，删除可疑文件
+
+- id: firewall_disabled
+  name: 防火墙已禁用
+  description: 检测Windows防火墙是否被禁用
+  level: high
+  pattern: '(?i)(State.*OFF|防火墙.*关闭)'
+  target_section: firewall
+  recommendation: 启用Windows防火墙并配置适当的规则

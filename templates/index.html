@@ -213,17 +213,7 @@
             border-color: var(--secondary-color);
         }
         
-        .tab-content {
-            display: none;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
+
         
         .stats-row {
             display: flex;
@@ -301,6 +291,35 @@
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* 标签页基础样式 */
+        .tab-pane {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        
+        .tab-content {
+            min-height: 600px !important;
+            background: white !important;
+            padding: 20px !important;
+            border-radius: 8px !important;
+            margin-top: 10px !important;
+        }
+        
+        /* 详细分析标签页样式 */
+        .analysis-tab-content {
+            display: none;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        
+        .analysis-tab-content.active {
+            display: block;
         }
         
         .detailed-analysis-section {

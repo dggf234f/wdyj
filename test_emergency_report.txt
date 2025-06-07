@@ -1,0 +1,282 @@
+===============================================
+Windows Emergency Response Report
+Generated: 2025-06-07 11:18:00
+===============================================
+
+===== SYSTEM INFORMATION =====
+
+----- System Details -----
+Host Name:                 DESKTOP-TEST123
+OS Name:                   Microsoft Windows 10 Pro
+OS Version:                10.0.19044 N/A Build 19044
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Standalone Workstation
+OS Build Type:             Multiprocessor Free
+Registered Owner:          Administrator
+Registered Organization:   
+Product ID:                00331-10000-00001-AA123
+Original Install Date:     1/15/2024, 10:30:00 AM
+System Boot Time:          6/7/2025, 8:00:00 AM
+System Manufacturer:       Dell Inc.
+System Model:              OptiPlex 7090
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: Intel64 Family 6 Model 142 Stepping 12 GenuineIntel ~2800 Mhz
+BIOS Version:              Dell Inc. 2.8.0, 3/15/2023
+Windows Directory:         C:\WINDOWS
+System Directory:          C:\WINDOWS\system32
+Boot Device:               \Device\HarddiskVolume2
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC-08:00) Pacific Time (US & Canada)
+Total Physical Memory:     16,384 MB
+Available Physical Memory: 8,192 MB
+Virtual Memory: Max Size:  32,768 MB
+Virtual Memory: Available: 16,384 MB
+Virtual Memory: In Use:    16,384 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    WORKGROUP
+Logon Server:              \\DESKTOP-TEST123
+Hotfix(s):                 156 Hotfix(s) Installed.
+
+===== PROCESS INFORMATION =====
+
+----- Running Processes -----
+Image Name                     PID Session Name        Session#    Mem Usage
+========================= ======== ================ =========== ============
+System Idle Process              0 Services                   0          8 K
+System                           4 Services                   0        140 K
+Registry                        88 Services                   0     32,768 K
+smss.exe                       344 Services                   0      1,024 K
+csrss.exe                      452 Services                   0      4,096 K
+wininit.exe                    544 Services                   0      3,584 K
+csrss.exe                      552 Console                    1      8,192 K
+winlogon.exe                   612 Console                    1      5,120 K
+services.exe                   668 Services                   0      8,704 K
+lsass.exe                      684 Services                   0     12,288 K
+svchost.exe                    792 Services                   0     16,384 K
+fontdrvhost.exe                800 Services                   0      2,048 K
+svchost.exe                    880 Services                   0      8,192 K
+svchost.exe                    956 Services                   0     24,576 K
+svchost.exe                   1024 Services                   0     32,768 K
+svchost.exe                   1088 Services                   0     16,384 K
+svchost.exe                   1156 Services                   0     12,288 K
+dwm.exe                       1264 Console                    1     65,536 K
+svchost.exe                   1312 Services                   0     20,480 K
+svchost.exe                   1320 Services                   0     16,384 K
+explorer.exe                  1456 Console                    1    102,400 K
+chrome.exe                    2344 Console                    1    256,000 K
+chrome.exe                    2456 Console                    1    128,000 K
+chrome.exe                    2568 Console                    1     64,000 K
+notepad.exe                   2680 Console                    1      8,192 K
+cmd.exe                       2792 Console                    1      4,096 K
+conhost.exe                   2800 Console                    1      8,192 K
+powershell.exe                2912 Console                    1     45,056 K
+backdoor.exe                  3024 Console                    1     16,384 K
+malware.exe                   3136 Services                   0     32,768 K
+
+===== NETWORK INFORMATION =====
+
+----- Network Configuration -----
+Windows IP Configuration
+
+Ethernet adapter Ethernet:
+   Connection-specific DNS Suffix  . : company.local
+   Link-local IPv6 Address . . . . . : fe80::1234:5678:9abc:def0%12
+   IPv4 Address. . . . . . . . . . . : 192.168.1.100
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 192.168.1.1
+
+----- Network Connections -----
+Active Connections
+
+  Proto  Local Address          Foreign Address        State
+  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:3389           0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:5985           0.0.0.0:0              LISTENING
+  TCP    192.168.1.100:139      0.0.0.0:0              LISTENING
+  TCP    192.168.1.100:445      192.168.1.50:52341    ESTABLISHED
+  TCP    192.168.1.100:3389     192.168.1.75:49152    ESTABLISHED
+  TCP    192.168.1.100:49152    8.8.8.8:53             ESTABLISHED
+  TCP    192.168.1.100:49153    157.240.12.35:443      ESTABLISHED
+  TCP    192.168.1.100:49154    52.96.7.33:443         ESTABLISHED
+  TCP    192.168.1.100:4444     185.220.101.32:80      ESTABLISHED
+  TCP    192.168.1.100:5555     45.142.214.123:443     ESTABLISHED
+  TCP    192.168.1.100:6666     198.51.100.42:80       ESTABLISHED
+  UDP    0.0.0.0:53             *:*                    
+  UDP    0.0.0.0:67             *:*                    
+  UDP    0.0.0.0:68             *:*                    
+  UDP    192.168.1.100:137      *:*                    
+  UDP    192.168.1.100:138      *:*                    
+
+===== USER INFORMATION =====
+
+----- User Accounts -----
+User name                    Administrator
+Full Name                    
+Comment                      Built-in account for administering the computer/domain
+User's comment               
+Country/region code          000 (System Default)
+Account active               Yes
+Account expires              Never
+
+Password last set            5/15/2025 2:30:00 PM
+Password expires             Never
+Password changeable          5/15/2025 2:30:00 PM
+Password required            Yes
+User may change password     Yes
+
+Workstations allowed         All
+Logon script                 
+User profile                 
+Home directory               
+Last logon                   6/7/2025 8:00:00 AM
+
+Logon hours allowed          All
+
+Local Group Memberships      *Administrators       *Users                
+
+User name                    Guest
+Full Name                    
+Comment                      Built-in account for guest access to the computer/domain
+User's comment               
+Country/region code          000 (System Default)
+Account active               No
+Account expires              Never
+
+User name                    hacker123
+Full Name                    Test Hacker
+Comment                      Suspicious test account
+User's comment               
+Country/region code          000 (System Default)
+Account active               Yes
+Account expires              Never
+Local Group Memberships      *Administrators       *Users                
+
+User name                    DefaultAccount
+Full Name                    
+Comment                      A user account managed by the system.
+User's comment               
+Country/region code          000 (System Default)
+Account active               No
+Account expires              Never
+
+User name                    WDAGUtilityAccount
+Full Name                    
+Comment                      A user account managed and used by the system for Windows Defender Application Guard scenarios.
+User's comment               
+Country/region code          000 (System Default)
+Account active               No
+Account expires              Never
+
+===== SERVICE INFORMATION =====
+
+----- Services -----
+SERVICE_NAME: AdobeARMservice
+DISPLAY_NAME: Adobe Acrobat Update Service
+        TYPE               : 10  WIN32_OWN_PROCESS
+        STATE              : 4  RUNNING
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+SERVICE_NAME: Appinfo
+DISPLAY_NAME: Application Information
+        TYPE               : 30  WIN32_SHARED_PROCESS
+        STATE              : 4  RUNNING
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+SERVICE_NAME: AudioEndpointBuilder
+DISPLAY_NAME: Windows Audio Endpoint Builder
+        TYPE               : 30  WIN32_SHARED_PROCESS
+        STATE              : 4  RUNNING
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+SERVICE_NAME: Audiosrv
+DISPLAY_NAME: Windows Audio
+        TYPE               : 30  WIN32_SHARED_PROCESS
+        STATE              : 4  RUNNING
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+SERVICE_NAME: BackdoorService
+DISPLAY_NAME: Suspicious Backdoor Service
+        TYPE               : 10  WIN32_OWN_PROCESS
+        STATE              : 4  RUNNING
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+===== EVENT LOGS =====
+
+----- Security Events -----
+Event ID: 4625
+Level: Information
+Source: Microsoft-Windows-Security-Auditing
+Description: An account failed to log on.
+Subject:
+	Security ID:		S-1-0-0
+	Account Name:		-
+	Account Domain:		-
+	Logon ID:		0x0
+
+Logon Type:			3
+Account For Which Logon Failed:
+	Security ID:		S-1-0-0
+	Account Name:		administrator
+	Account Domain:		DESKTOP-TEST123
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+	Status:			0xc000006d
+	Sub Status:		0xc000006a
+
+Event ID: 4625
+Level: Information
+Source: Microsoft-Windows-Security-Auditing
+Description: An account failed to log on.
+
+Event ID: 4625
+Level: Information
+Source: Microsoft-Windows-Security-Auditing
+Description: An account failed to log on.
+
+Event ID: 4625
+Level: Information
+Source: Microsoft-Windows-Security-Auditing
+Description: An account failed to log on.
+
+Event ID: 4625
+Level: Information
+Source: Microsoft-Windows-Security-Auditing
+Description: An account failed to log on.
+
+Event ID: 4624
+Level: Information
+Source: Microsoft-Windows-Security-Auditing
+Description: An account was successfully logged on.
+
+Event ID: 4672
+Level: Information
+Source: Microsoft-Windows-Security-Auditing
+Description: Special privileges assigned to new logon.
+
+Event ID: 4672
+Level: Information
+Source: Microsoft-Windows-Security-Auditing
+Description: Special privileges assigned to new logon.
+
+===============================================
+Report Generation Completed: 6/7/2025 11:18:30
+===============================================
